@@ -1,25 +1,33 @@
 public class Produto {
+    private static int qntProdutos;
     private String nome;
     private double preco;
-    private double precoMinimo = 2.99;
+    private final double PRECO_MINIMO = 2.99;
     
     Produto(String nome, double preco) {
+        //PRECO_MINIMO = 20; não se pode alterar o valor de uma constante.
         if (nome != "") {
             this.nome = nome;
-            
-            if (preco <= 0) {
-                this.preco = precoMinimo;
-            } else {
-                this.preco = preco;
-            }
-            
+            setPreco(preco);
+            produto.qntProdutos++;
         }
+    }
+
+    public string getNome() {
+        return this.nome;
     }
     
     public double getPreco() {
         return this.preco;
     }
-    
+
+    private void setPreco(double preco) {
+        if (preco <= 0) {
+            this.preco = PRECO_MINIMO;
+        } else {
+            this.preco = preco;
+        }
+    }
     
     public static void main(String[] args) {
         Produto p1 = new Produto("livro", 20);
